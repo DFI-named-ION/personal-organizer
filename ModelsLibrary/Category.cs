@@ -8,6 +8,8 @@ namespace ModelsLibrary
 {
     public class Category
     {
-
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public List<MyTask> Tasks { get; set; }
     }
 }

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelsLibrary
 {
-    class Priority
+    public class Priority
     {
-
+        public int ID { get; set; }
+        public int Power { get; set; }
     }
 }
