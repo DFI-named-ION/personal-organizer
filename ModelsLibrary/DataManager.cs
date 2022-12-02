@@ -16,19 +16,16 @@ namespace ModelsLibrary
             set { _path = value; }
         }
 
-        public void SaveDataToFile(string fileName)
+        public void SaveDataToFile(string fileName, string content)
         {
             try
             {
-                fileName += " - " + DateTime.Now.Hour + "/" + DateTime.Now.Minute + "/" + DateTime.Now.Second;
-                fileName += ".dat";
-
-                string content = Task
+                fileName += " - " + DateTime.Now.Hour + "/" + DateTime.Now.Minute + "/" + DateTime.Now.Second + ".dat";
 
                 if (_path[_path.Length - 1].ToString() == @"\")
-                    File.WriteAllText(_path + fileName, content);
+                    File.WriteAllBytes(_path + fileName, Encoding.UTF8.GetBytes(content));
                 else
-                    Directory.Delete(_path + @"\" + fileName);
+                    File.WriteAllBytes(_path + @"\" + fileName, Encoding.UTF8.GetBytes(content));
             }
             catch (Exception ex)
             {
@@ -40,10 +37,12 @@ namespace ModelsLibrary
         {
             try
             {
+                byte[] data;
                 if (_path[_path.Length - 1].ToString() == @"\")
-                    Directory.Delete(_path + fileName);
+                    data = File.ReadAllBytes(_path + fileName);
                 else
-                    Directory.Delete(_path + @"\" + fileName);
+                    data = File.ReadAllBytes(_path + @"\" + fileName);
+                string content = Encoding.UTF8.GetString(data);
             }
             catch (Exception ex)
             {

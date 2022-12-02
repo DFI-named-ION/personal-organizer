@@ -95,7 +95,7 @@ namespace ModelsLibrary
 
         public void UnWrapBox(string content)
         {
-
+            // sorry i don`t have enough time to do this homework and "blackout" is the reason
         }
 
         public string WrapBox()
